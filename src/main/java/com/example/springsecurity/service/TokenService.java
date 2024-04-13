@@ -4,11 +4,13 @@ import com.example.springsecurity.utils.constant.Constants;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+@Component
 public class TokenService {
     @Value("${token.secret}")
     private String secret;
@@ -25,13 +27,10 @@ public class TokenService {
         String token = UUID.randomUUID().toString();
         loginUser.setToken(token);
 
-
         Map<String, Object> claims = new HashMap<>();
         claims.put(Constants.LOGIN_USER_KEY, token);
         return createToken(claims);
     }
-
-
 
     /**
      * 从数据声明生成令牌

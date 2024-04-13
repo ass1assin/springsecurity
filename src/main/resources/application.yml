@@ -5,3 +5,8 @@ spring:
     user:
      password: 123
 
+token:
+  header: Authorization
+  secret: abcdefghijklmnopqrstuvwxyz
+  expireTime: 600
+

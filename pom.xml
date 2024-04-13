@@ -45,6 +45,13 @@
             <version>0.9.1</version>
         </dependency>
 
+<!--       为什么需要这个？-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

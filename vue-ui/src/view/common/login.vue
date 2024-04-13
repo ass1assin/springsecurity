@@ -8,7 +8,6 @@
             type="text"
             auto-complete="off"
             placeholder="账号">
-          <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
         </el-input>
 
       </el-form-item>
@@ -19,7 +18,6 @@
             auto-complete="off"
             placeholder="密码"
             @keyup.enter.native="handleLogin">
-          <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon" />
         </el-input>
       </el-form-item>
 
@@ -43,6 +41,7 @@
 
 <script>
 import {login} from "@/api/common/login";
+import {getToken} from "@/utils/auth";
 
 export default {
   name: "Login",
@@ -71,25 +70,14 @@ export default {
   methods: {
     // 登录
     handleLogin() {
-      login(this.loginForm).then((res)=>{
-        if (res.data.code === 200) {
-          this.$message({
-            message: "登录成功",
-            type: "success",
-            duration: 800, // 提示消息显示时间，单位毫秒
-          });
-          // 操作成功，执行其他逻辑
-          // this.$router.push({name:"首页",path:'/index'});
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+           this.$store.dispatch("Login",this.loginForm).then(()=>{
 
-        }else {
-          this.$message({
-            message: "用户名或密码错误",
-            type: "error",
-            duration: 2000,
-          });
+                 // this.$router.push({path: "/"})
+           })
         }
-
-      })
+      });
     },
 
   }

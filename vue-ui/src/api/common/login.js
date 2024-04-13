@@ -1,10 +1,17 @@
 import axios from 'axios';
 
-export function login(query){
+export function login(data){
     return axios({
         url:'/api/login',
         method:'post',
-        params: query,
+        data: data
+    })
+}
+
+export function getInfo() {
+    return axios({
+        url: '/getInfo',
+        method: 'get'
     })
 }
 

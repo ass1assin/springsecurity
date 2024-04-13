@@ -11,14 +11,12 @@ const routes = [
   // 登录
   {
     path: '/login',
-    name:'登录',
     component: () => import('../view/common/login'),
     meta: { noLayout: true },
   },
 
   {
     path: '/sidebar',
-    name:'菜单',
     component: () => import('../components/sidebar/sidebar'),
     meta: { noLayout: true },
   },
