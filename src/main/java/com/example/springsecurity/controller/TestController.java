@@ -1,7 +1,9 @@
 package com.example.springsecurity.controller;
 
 
+import com.example.springsecurity.domain.LoginBody;
 import com.example.springsecurity.domain.LoginUser;
+import com.example.springsecurity.service.TestService;
 import com.example.springsecurity.service.TokenService;
 import com.example.springsecurity.utils.AjaxResult;
 import com.example.springsecurity.utils.constant.Constants;
@@ -16,6 +18,9 @@ public class TestController {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private TestService testService;
+
     @RequestMapping("/test")
     public String atest(){
         System.out.println("sssss");
@@ -23,10 +28,11 @@ public class TestController {
     }
 
     @PostMapping("/login")
-    public AjaxResult login(@RequestBody LoginUser loginUser){
+    public AjaxResult login(@RequestBody LoginBody loginBody){
         AjaxResult ajax=AjaxResult.success();
 //        生成令牌
-        String token=tokenService.createToken(loginUser);
+//        String token=tokenService.createToken(loginUser);
+        String token=testService.login(loginBody.getUsername(),loginBody.getPassword());
         ajax.put(Constants.TOKEN,token);
         return ajax;
     }

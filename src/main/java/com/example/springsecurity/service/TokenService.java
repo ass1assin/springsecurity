@@ -16,8 +16,8 @@ public class TokenService {
     private String secret;
 
     /**
-     * 创建令牌
-     *
+     * 创建访问令牌
+     *(让你登录进得去)
      * @param loginUser 用户信息
      * @return 令牌
      */
