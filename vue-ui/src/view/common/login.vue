@@ -61,9 +61,17 @@ export default {
         ],
       },
       loading: false,
+      // redirect: undefined
     };
   },
-
+  // watch: {
+  //   $route: {
+  //     handler: function(route) {
+  //       this.redirect = route.query && route.query.redirect;
+  //     },
+  //     immediate: true
+  //   }
+  // },
   created() {
 
   },
@@ -73,9 +81,10 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
            this.$store.dispatch("Login",this.loginForm).then(()=>{
-
-                 // this.$router.push({path: "/"})
-           })
+                 this.$router.push({path: "/sidebar"}).catch(()=>{});
+           }).catch(error => {
+             console.error("登录失败: " + error);
+           });
         }
       });
     },

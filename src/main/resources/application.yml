@@ -9,10 +9,22 @@ spring:
     url: jdbc:mysql://localhost:3306/springsecurity?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
     username: root
     password: 144601
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    password: 144601
+    timeout: 10s
 
 token:
   header: Authorization
   secret: abcdefghijklmnopqrstuvwxyz
   expireTime: 600
 
+# Swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: true
+  # 请求前缀
+  pathMapping: /dev-api
 

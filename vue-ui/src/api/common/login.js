@@ -1,10 +1,11 @@
-import axios from 'axios';
+import axios from 'axios'
+import request from '@/utils/request'
 
 export function login(data){
-    return axios({
-        url:'/api/login',
+    return request({
+        url:'/login',
         method:'post',
-        data: data
+        data:data
     })
 }
 
@@ -17,7 +18,7 @@ export function getInfo() {
 
 export function loginout(){
     return axios({
-        url:'/api/loginout',
+        url:'/loginout',
         method:'post',
     })
 }

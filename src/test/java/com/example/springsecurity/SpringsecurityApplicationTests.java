@@ -51,7 +51,8 @@ class SpringsecurityApplicationTests {
         sysUser.setUserName("admin");
         sysUser.setPassword("908908");
         LoginUser loginUser = new LoginUser(1L,sysUser, permissions);
-        System.out.println(tokenService.createToken(loginUser));
+//        System.out.println(tokenService.createToken(loginUser));
+        tokenService.refreshToken(loginUser);
     }
 
     @Test

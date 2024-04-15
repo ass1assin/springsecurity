@@ -8,13 +8,13 @@ module.exports = defineConfig({
     // open: true,
     port: 8080,
     proxy: {
-      '/api': {
-        target: 'http://localhost:8080', // 后端服务地址
+      [process.env.VUE_APP_BASE_API]: {
+        target: `http://localhost:8080`,
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '', // 将请求地址中的 /api 前缀替换为空(映射springMvc时)
-        },
-      },
+          ['^' + process.env.VUE_APP_BASE_API]: ''
+        }
+      }
     },
   },
   transpileDependencies: true

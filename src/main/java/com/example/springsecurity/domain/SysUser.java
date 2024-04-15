@@ -1,6 +1,8 @@
 package com.example.springsecurity.domain;
 
-public class SysUser {
+import java.io.Serializable;
+
+public class SysUser implements Serializable {
     private Long userId;
     private String userName;
     private String password;

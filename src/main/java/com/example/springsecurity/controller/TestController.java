@@ -16,9 +16,6 @@ import java.util.Set;
 @RestController
 public class TestController {
     @Autowired
-    private TokenService tokenService;
-
-    @Autowired
     private TestService testService;
 
     @RequestMapping("/test")

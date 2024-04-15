@@ -1,5 +1,6 @@
 package com.example.springsecurity.config;
 
+import com.example.springsecurity.security.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,12 +13,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    /**
+     * token认证过滤器
+     */
+    @Autowired
+    private JwtAuthenticationTokenFilter authenticationTokenFilter;
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -41,6 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                   .and()
                 .csrf().disable()
           ;
+        // 添加JWT filter
+        http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     /**
