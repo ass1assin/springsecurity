@@ -35,7 +35,7 @@ public String login(String username,String password){
     }
     finally
     {
-        System.out.println("咋了");
+        System.out.println("执行了的认证流程");
     }
     LoginUser loginUser = (LoginUser) authentication.getPrincipal();
     return tokenService.createToken(loginUser);

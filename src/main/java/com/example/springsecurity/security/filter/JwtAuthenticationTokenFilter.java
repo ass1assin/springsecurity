@@ -31,12 +31,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter
             throws ServletException, IOException
     {
         LoginUser loginUser = tokenService.getLoginUser(request);
-        if (loginUser!=null && SecurityContextHolder.getContext().getAuthentication()!=null)
+        if (loginUser!=null && SecurityContextHolder.getContext().getAuthentication()==null)
         {
-//            验证令牌有效期，相差不足20分钟，自动刷新缓存
-//            tokenService.verifyToken(loginUser);
+//            用户的认证信息
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
+//            创建认证相关的额外信息,例如用户的IP地址等
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+//            用户认证信息设置到安全上下文
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
         chain.doFilter(request, response);

@@ -17,6 +17,7 @@ router.beforeEach((to, from, next) => {
             next({ path: '/sidebar' })
             NProgress.done()
         }
+        // 有token也要判断是否有权限访问
         else if (whiteList.indexOf(to.path) !== -1) {
             NProgress.done()
             console.log("在这1")
