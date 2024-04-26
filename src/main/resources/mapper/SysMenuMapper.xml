@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springsecurity.mapper.SysMenuMapper">
+    <resultMap type="com.example.springsecurity.domain.SysMenu" id="SysMenuResult">
+        <id     property="menuId"         column="menu_id"        />
+        <result property="menuName"       column="menu_name"      />
+        <result property="parentId"       column="parent_id"      />
+        <result property="path"           column="path"           />
+        <result property="component"      column="component"      />
+    </resultMap>
+   <select id="selectMenuTreeAll" resultMap="SysMenuResult">
+       select * from sys_menu
+   </select>
+
+    <select id="selectMenuPermsByRoleId" resultType="String">
+        select perms
+        from sys_menu m
+        left join sys_role_menu srm on m.menu_id = srm.menu_id
+        where role_id=#{roleId}
+    </select>
+</mapper>

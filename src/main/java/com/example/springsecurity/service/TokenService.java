@@ -98,6 +98,7 @@ public class TokenService {
     private String getToken(HttpServletRequest request)
     {
         String token = request.getHeader(header);
+//        去除请求前缀
         if (token!=null && token.startsWith(Constants.TOKEN_PREFIX))
         {
             token = token.replace(Constants.TOKEN_PREFIX, "");

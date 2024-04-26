@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [
+// 静态路由
+export const constantRoutes = [
   {
     path: '/',
     redirect: '/login', // 默认重定向到 /login
@@ -22,9 +23,14 @@ const routes = [
   },
 ]
 
+//动态路由，基于用户权限动态去加载
+export const dynamicRoutes = {
+
+}
+
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes: constantRoutes
 })
 
 export default router

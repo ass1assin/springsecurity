@@ -1,5 +1,7 @@
 package com.example.springsecurity.domain;
 
+import java.util.List;
+
 public class SysRole {
 
     private Long roleId;
@@ -9,6 +11,7 @@ public class SysRole {
 
     /** 角色权限 */
     private String roleKey;
+
 
     public Long getRoleId() {
         return roleId;
@@ -33,4 +36,6 @@ public class SysRole {
     public void setRoleKey(String roleKey) {
         this.roleKey = roleKey;
     }
+
+
 }

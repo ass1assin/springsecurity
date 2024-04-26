@@ -36,10 +36,11 @@ class SpringsecurityApplicationTests {
 
     @Test
     void contextLoads() {
-        LoginBody loginBody=new LoginBody();
-        loginBody.setUsername("admin");
-        loginBody.setPassword("908908");
-        System.out.println(testController.login(loginBody));
+//        LoginBody loginBody=new LoginBody();
+//        loginBody.setUsername("admin");
+//        loginBody.setPassword("123456");
+//        System.out.println(testController.login(loginBody));
+        System.out.println("getinfo"+testController.getInfo());
 //        System.out.println(sysUserMapper.selectUserByUserName("admin"));
     }
 
@@ -57,7 +58,7 @@ class SpringsecurityApplicationTests {
 
     @Test
     void a(){
-        System.out.println(sysRoleService.selectRolePermissionByUserId(2L));
+        System.out.println(testController.getRouters());
     }
 
     @Test
